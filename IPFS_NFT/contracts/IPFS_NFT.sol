@@ -98,6 +98,8 @@ contract IPFS_NFT is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
 
         Breed dogBreed = getBreedFromModdedRng(moddedRng);
 
+        s_tokenCounter += 1;
+
         _safeMint(dogOwner, newTokenId);
         _setTokenURI(newTokenId, s_dogTokenURI[uint256(dogBreed)]);
 
@@ -135,8 +137,8 @@ contract IPFS_NFT is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
         return i_mintFee;
     }
 
-    function getDogTokenURI(uint256 index) public view returns (string memory) {
-        return s_dogTokenURI[index];
+    function getDogTokenURI(uint256 _index) public view returns (string memory) {
+        return s_dogTokenURI[_index];
     }
 
     function getTokenCounter() public view returns (uint256) {
